@@ -30,7 +30,7 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [ ] Pixel Density
 - [x] Rotation
 - [x] Size
-- [ ] Stylize
+- [x] Stylize
 - [ ] Text
 - [ ] Trim
 - [ ] Typesetting Endpoint
