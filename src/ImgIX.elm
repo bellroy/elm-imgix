@@ -2,6 +2,7 @@ module ImgIX exposing
     ( ImgIX
     , fromUrl, fromString
     , size, sizes
+    , rotation, rotations
     , adjust, adjustments
     , automatic, automatics
     , toUrl, toHtml, toHtmlWithAttributes
@@ -25,6 +26,11 @@ module ImgIX exposing
 @docs size, sizes
 
 
+# Rotation
+
+@docs rotation, rotations
+
+
 # Adjustment
 
 @docs adjust, adjustments
@@ -45,6 +51,7 @@ import Html as Html exposing (Attribute, img)
 import Html.Attributes as HtmlAttr exposing (src)
 import ImgIX.Adjustment exposing (Adjustment, toQueryParameters)
 import ImgIX.Automatic exposing (Automatic, toQueryParameter)
+import ImgIX.Rotation exposing (Rotation, toQueryParameters)
 import ImgIX.Size exposing (Size, toQueryParameters)
 import Url as Url exposing (Url, fromString, toString)
 import Url.Builder as UrlBuilder exposing (toQuery)
@@ -90,6 +97,28 @@ size x (ImgIX url imgIXOptions) =
 sizes : List Size -> ImgIX -> ImgIX
 sizes =
     fold size
+
+
+
+-- Rotation
+
+
+{-| Adjust an ImgIX using Rotations
+Check the ImgIX.Rotation module for all the rotations available.
+-}
+rotation : Rotation -> ImgIX -> ImgIX
+rotation x (ImgIX url imgIXOptions) =
+    ImgIX url
+        { imgIXOptions
+            | rotation = x :: imgIXOptions.rotation
+        }
+
+
+{-| Apply a list of Rotations
+-}
+rotations : List Rotation -> ImgIX -> ImgIX
+rotations =
+    fold rotation
 
 
 
@@ -145,21 +174,26 @@ automatics =
 toUrl : ImgIX -> Url.Url
 toUrl (ImgIX url imgIXOptions) =
     let
+        sizeQueryParameters =
+            ImgIX.Size.toQueryParameters imgIXOptions.size
+
+        rotationQueryParameters =
+            ImgIX.Rotation.toQueryParameters imgIXOptions.rotation
+
         automaticQueryParameter =
             ImgIX.Automatic.toQueryParameter imgIXOptions.automatic
 
         adjustmentQueryParameters =
             ImgIX.Adjustment.toQueryParameters imgIXOptions.adjustment
 
-        sizeQueryParameters =
-            ImgIX.Size.toQueryParameters imgIXOptions.size
-
         query =
             UrlBuilder.toQuery
-                (automaticQueryParameter
-                    :: adjustmentQueryParameters
-                    ++ sizeQueryParameters
+                (sizeQueryParameters
+                    ++ rotationQueryParameters
+                    ++ adjustmentQueryParameters
+                    ++ [ automaticQueryParameter ]
                 )
+                |> String.dropLeft 1
                 |> Just
     in
     { url | query = query }
@@ -194,6 +228,7 @@ type alias ImgIXOptions =
     { size : List Size
     , adjustment : List Adjustment
     , automatic : List Automatic
+    , rotation : List Rotation
     }
 
 
@@ -208,6 +243,7 @@ emptyImgIXOptions =
     { size = []
     , adjustment = []
     , automatic = []
+    , rotation = []
     }
 
 
