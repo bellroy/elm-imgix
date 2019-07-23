@@ -54,6 +54,8 @@ type Rotation
 -- Rotation
 
 
+{-| Rotate your image by given degrees
+-}
 rotate : Int -> Rotation
 rotate =
     Rotation << modBy 360
