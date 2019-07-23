@@ -126,7 +126,19 @@ toQueryParameters rotations =
             (\( ( a, b ), c ) ->
                 case a of
                     "flip" ->
-                        ( "flip", String.join "" <| (b :: List.map Tuple.second c) )
+                        ( "flip"
+                        , (b :: List.map Tuple.second c)
+                            |> String.join ""
+                        )
+
+                    "rot" ->
+                        ( "rot"
+                        , List.map Tuple.second c
+                            |> (::) b
+                            |> List.map (Maybe.withDefault 0 << String.toInt)
+                            |> List.foldl (+) 0
+                            |> String.fromInt
+                        )
 
                     _ ->
                         ( a, b )

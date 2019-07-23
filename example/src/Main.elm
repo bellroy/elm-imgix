@@ -7,6 +7,7 @@ import ImgIX.Adjustment
 import ImgIX.Automatic
 import ImgIX.Rotation
 import ImgIX.Size
+import ImgIX.Stylize
 import Url
 
 
@@ -64,12 +65,16 @@ view _ =
                     [ ImgIX.Rotation.flipHorizontal
                     , ImgIX.Rotation.rotate 12
                     ]
+                |> ImgIX.stylizations
+                    [ ImgIX.Stylize.blur 20
+                    , ImgIX.Stylize.sepia 99
+                    ]
     in
     Html.div []
         [ Html.h1 [] [ Html.text "elm-imgix Example" ]
         , Html.h2 [] [ Html.text "Crop to height 200" ]
         , ImgIX.toHtml exampleA
-        , Html.h2 [] [ Html.text "Crop 200 x 200, focus on face and set brightness to 20, flip and rotate, serve as optimal file format" ]
+        , Html.h2 [] [ Html.text "Crop 200 x 200, focus on face and set brightness to 20, flip and rotate, blur and apply sepia, serve as optimal file format" ]
         , ImgIX.toHtml exampleB
         ]
 

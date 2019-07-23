@@ -36,25 +36,61 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [ ] Typesetting Endpoint
 - [ ] Watermark
 
-## Simple usage example
-
-Adjust the brightness of an imgix image and apply a list of automatic enhancement
+## Usage example A
 
 ```elm
 import ImgIX
-import ImgIX.Adjustment as Adjustment
-import ImgIX.Automatic as Automatic
+import ImgIX.Size
 
-type alias Model =
-    { imageSrc : Url.Url
-    }
 
-view : { imageSrc : Url.Url } -> Html.Html msg
-view { imageSrc } =
-    ImgIX.fromUrl imageSrc
-        |> ImgIX.adjust (Adjustment.brightness 50)
-        |> ImgIX.automatics [ Automatic.enhance, Automatic.compress, Automatic.fileFormat ]
-        |> ImgIX.toHtml
+exampleB :   Html.Html msg
+exampleB  =
+  ImgIX.fromUrl imageUrlWomen
+      |> ImgIX.sizes
+          [ ImgIX.Size.height 200
+          ]
 
 
 ```
+![result example a](https://static-a.imgix.net/woman.jpg?h=200)
+
+
+## Usage example B
+
+
+```elm
+import ImgIX
+import ImgIX.Adjustment
+import ImgIX.Automatic
+import ImgIX.Rotation
+import ImgIX.Size
+import ImgIX.Stylize
+
+
+exampleB :   Html.Html msg
+exampleB  =
+  ImgIX.fromUrl imageUrlWomen
+      |> ImgIX.sizes
+          [ ImgIX.Size.width 200
+          , ImgIX.Size.height 200
+          , ImgIX.Size.fitFaceArea
+          ]
+      |> ImgIX.adjustments
+          [ ImgIX.Adjustment.brightness 20
+          ]
+      |> ImgIX.rotations
+          [ ImgIX.Rotation.flipHorizontal
+          , ImgIX.Rotation.rotate 12
+          ]
+      |> ImgIX.stylizations
+          [ ImgIX.Stylize.blur 20
+          , ImgIX.Stylize.sepia 99
+          ]
+      |> ImgIX.automatics
+          [ ImgIX.Automatic.fileFormat
+          ]
+
+
+```
+
+![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)

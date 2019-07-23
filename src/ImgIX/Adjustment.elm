@@ -8,8 +8,6 @@ module ImgIX.Adjustment exposing
 
 For additional artistic effects, see the Stylize parameters.
 
-[ImgIx documentation for Adjustments](https://docs.imgix.com/apis/url/adjustment)
-
 @docs Adjustment
 
 
@@ -50,11 +48,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **brightness 50**
 
-![brightness 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?bri=50&fit=crop&w=150&h=150")
+![brightness 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?bri=50&fit=crop&w=150&h=150)
 
 -}
 brightness : Int -> Adjustment
@@ -68,11 +66,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **contrast -50**
 
-![contrast -50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?con=-50&fit=crop&w=150&h=150")
+![contrast -50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?con=-50&fit=crop&w=150&h=150)
 
 [ImgIx documentation for Contrast](https://docs.imgix.com/apis/url/adjustment/con)
 
@@ -88,11 +86,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **exposure 10**
 
-![exposure 10](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?exp=10&fit=crop&w=150&h=150")
+![exposure 10](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?exp=10&fit=crop&w=150&h=150)
 
 -}
 exposure : Int -> Adjustment
@@ -106,11 +104,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **gamma 50**
 
-![gamma 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?gam=50&fit=crop&w=150&h=150")
+![gamma 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?gam=50&fit=crop&w=150&h=150)
 
 -}
 gamma : Int -> Adjustment
@@ -124,11 +122,11 @@ Valid values are in the range -100 – 0. The default value is 0, which leaves t
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **highlight 50**
 
-![highlight 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?high=50&fit=crop&w=150&h=150")
+![highlight 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?high=50&fit=crop&w=150&h=150)
 
 -}
 highlight : Int -> Adjustment
@@ -142,11 +140,11 @@ Valid values are in the range -100 – 0. The default value is 0, which leaves t
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **hueshift 50**
 
-![hueshift 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?hue=50&fit=crop&w=150&h=150")
+![hueshift 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?hue=50&fit=crop&w=150&h=150)
 
 -}
 hueshift : Int -> Adjustment
@@ -158,11 +156,11 @@ hueshift =
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **invert**
 
-![invert](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?invert=true&fit=crop&w=150&h=150")
+![invert](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?invert=true&fit=crop&w=150&h=150)
 
 -}
 invert : Adjustment
@@ -176,11 +174,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **saturation 100**
 
-![saturation 100](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?sat=100&fit=crop&w=150&h=150")
+![saturation 100](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?sat=100&fit=crop&w=150&h=150)
 
 -}
 saturation : Int -> Adjustment
@@ -194,11 +192,11 @@ Valid values are in the range 0 – 100. The default value is 0, which leaves th
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **shadow 50**
 
-![shadow 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?shad=50&fit=crop&w=150&h=150")
+![shadow 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?shad=50&fit=crop&w=150&h=150)
 
 -}
 shadow : Int -> Adjustment
@@ -212,11 +210,11 @@ Valid values are in the range 0 – 100. The default value is 0, which leaves th
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **sharpen 50**
 
-![sharpen 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?sharp=50&fit=crop&w=150&h=150")
+![sharpen 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?sharp=50&fit=crop&w=150&h=150)
 
 -}
 sharpen : Int -> Adjustment
@@ -234,11 +232,11 @@ For images with general noise, we suggest using the sharp parameter instead. Uns
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **unsharpmask 20 10.5**
 
-![unsharpmask 20 10.5](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?usmrad=10.5&usm=20&fit=crop&w=150&h=150")
+![unsharpmask 20 10.5](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?usmrad=10.5&usm=20&fit=crop&w=150&h=150)
 
 -}
 unsharpmask : Int -> Float -> Adjustment
@@ -252,11 +250,11 @@ Valid values are in the range -100 – 100. The default value is 0, which leaves
 
 **original**
 
-![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150")
+![original](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?fit=crop&w=150&h=150)
 
 **vibrance 50**
 
-![vibrance 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?vib=50&fit=crop&w=150&h=150")
+![vibrance 50](https://bellroy.imgix.net/dynamic-assets/W1siZnUiLCJodHRwczovL3MzLmFtYXpvbmF3cy5jb20vcHJvZHVjdC5pbWFnZXMuYmVsbHJveS5jb20vcHJvZHVjdF9pbWFnZXMvaW1hZ2VzLzAwMC8wMDMvODMzL29yaWdpbmFsLzc5ZmM2MGNkZmNkMjM5YWFjZGU3OWU4YTc2OTQ1NWZhOWJkN2MyODU3NGQ3Mzk0NDQxYTMyYmRmOGU4ZTdmOTUuanBnIl1d/5460fe0f4301a507/79fc60cdfcd239aacde79e8a769455fa9bd7c28574d7394441a32bdf8e8e7f95.jpg?vib=50&fit=crop&w=150&h=150)
 
 -}
 vibrance : Int -> Adjustment
@@ -271,11 +269,10 @@ vibrance =
 {-| Takes a list of adjustments and turns it in to a list of query parameters that ImgIX understands
 -}
 toQueryParameters : List Adjustment -> List UrlBuilder.QueryParameter
-toQueryParameters adjustments =
+toQueryParameters =
     List.foldl
         (\adjustment list -> toQueryParameters_ adjustment ++ list)
         []
-        adjustments
 
 
 
@@ -324,6 +321,10 @@ toQueryParameters_ adjustment =
 
         Vibrance int ->
             [ UrlBuilder.int "vib" int ]
+
+
+
+-- Helpers
 
 
 betweenNegativeHundredAndHundred : Int -> Int

@@ -93,7 +93,7 @@ Focal Point Cropping allows you to target and zoom to a portion of the image usi
 
 -}
 
-import Color as Color exposing (Color, toRgba)
+import ImgIX.Internals.Color as Color exposing (Color, toHex)
 import List.Extra as ListExtra exposing (group)
 import Url.Builder as UrlBuilder exposing (QueryParameter, string)
 
@@ -102,7 +102,7 @@ import Url.Builder as UrlBuilder exposing (QueryParameter, string)
 -}
 type Size
     = AspectRatio { width : Float, height : Float }
-    | CropMode CropMode
+    | Crop CropMode
     | Fit ResizeFitMode
     | Height Int
     | RelativeHeight Float
@@ -200,7 +200,7 @@ The pixel extension is called an affine clamp, hence the value name, "clamp".
 -}
 fitClamp : Size
 fitClamp =
-    Fit Clamp
+    Fit ResizeFitModeClamp
 
 
 {-| Resizes the image to fit within the width and height boundaries without cropping or distorting the image. The resulting image will match one of the constraining dimensions, while the other dimension is altered to maintain the same aspect ratio of the input image.
@@ -210,7 +210,7 @@ fitClamp =
 -}
 fitClip : Size
 fitClip =
-    Fit Clip
+    Fit ResizeFitModeClip
 
 
 {-| Resizes the image to fill the width and height dimensions and crops any excess image data. The resulting image will match the width and height constraints without distorting the image. It's used in conjunction with the the crop parameter, which controls how the image is cropped.
@@ -222,7 +222,7 @@ Both the `width` and `height` parameters will also need to be set.
 -}
 fitCrop : Size
 fitCrop =
-    Fit Crop
+    Fit ResizeFitModeCrop
 
 
 {-| Finds the area containing all faces, or a specific face in an image, and scales it to specified width and height dimensions.
@@ -232,7 +232,7 @@ fitCrop =
 -}
 fitFaceArea : Size
 fitFaceArea =
-    Fit <| FaceArea Nothing
+    Fit <| ResizeFitModeFaceArea Nothing
 
 
 {-| Finds the area containing all faces, or a specific face in an image, and scales it to specified width and height dimensions.
@@ -242,7 +242,7 @@ Use in conjunction with index to identify a specific face, as well as padding to
 -}
 fitFaceAreaWithOptions : { index : Int, padding : Int } -> Size
 fitFaceAreaWithOptions =
-    Fit << FaceArea << Just
+    Fit << ResizeFitModeFaceArea << Just
 
 
 {-| Resizes the image to fit within the requested width and height dimensions while preserving the original aspect ratio and without discarding any original image data.
@@ -256,7 +256,7 @@ To achieve these characteristics while also preventing an image from being sized
 -}
 fitFill : Maybe Color.Color -> Size
 fitFill =
-    Fit << Fill
+    Fit << ResizeFitModeFill
 
 
 {-| Resizes the image to fit within the requested width and height dimensions while preserving the original aspect ratio and without discarding any original image data. If the requested width or height exceeds that of the original, the original image remains the same size.
@@ -270,7 +270,7 @@ Note that `fitFillMax` places constraints on upscaling the original image; `fitF
 -}
 fitFillMax : Maybe Color.Color -> Size
 fitFillMax =
-    Fit << FillMax
+    Fit << ResizeFitModeFillMax
 
 
 {-| Resizes the image to fit within the width and height dimensions without cropping or distorting the image, but will not increase the size of the image if it is smaller than the output size.
@@ -280,7 +280,7 @@ The resulting image will maintain the same aspect ratio of the input image.
 -}
 fitMax : Size
 fitMax =
-    Fit Max
+    Fit ResizeFitModeMax
 
 
 {-| Resizes and crops the image to match the aspect ratio of the requested width and height.
@@ -290,7 +290,7 @@ Will not exceed the original width and height of the image.
 -}
 fitMin : Size
 fitMin =
-    Fit Min
+    Fit ResizeFitModeMin
 
 
 {-| Scales the image to fit the constraining dimensions exactly.
@@ -300,7 +300,7 @@ The resulting image will fill the dimensions, and will not maintain the aspect r
 -}
 fitScale : Size
 fitScale =
-    Fit Scale
+    Fit ResizeFitModeScale
 
 
 
@@ -406,28 +406,28 @@ aspectRatio =
 -}
 cropModeTop : Size
 cropModeTop =
-    CropMode CropModeTop
+    Crop CropModeTop
 
 
 {-| Crop from the bottom of the image, up.
 -}
 cropModeBottom : Size
 cropModeBottom =
-    CropMode CropModeBottom
+    Crop CropModeBottom
 
 
 {-| Crop from the left of the image, right.
 -}
 cropModeLeft : Size
 cropModeLeft =
-    CropMode CropModeLeft
+    Crop CropModeLeft
 
 
 {-| Crop from the right of the image, left.
 -}
 cropModeRight : Size
 cropModeRight =
-    CropMode CropModeRight
+    Crop CropModeRight
 
 
 {-| Crop to faces
@@ -443,7 +443,7 @@ Crop to faces
 -}
 cropModeFaces : Size
 cropModeFaces =
-    CropMode CropModeFaces
+    Crop CropModeFaces
 
 
 {-| The following example illustrates the difference between the default centered crop and one made with focal point parameters to target and zoom to a portion of the image.
@@ -459,7 +459,7 @@ Vertical 1.2, Horizontal 0.35, Zoom 2
 -}
 cropModeFocalPoint : { vertical : Float, horizontal : Float, zoom : Float } -> Size
 cropModeFocalPoint =
-    CropMode << CropModeFocalPoint
+    Crop << CropModeFocalPoint
 
 
 {-| The edges crop automatically finds and crops to an area of interest by performing edge detection, looking for objects within the image.
@@ -475,7 +475,7 @@ Edges crop
 -}
 cropModeEdges : Size
 cropModeEdges =
-    CropMode CropModeEdges
+    Crop CropModeEdges
 
 
 {-| The entropy crop automatically finds and crops to an area of interest by looking for busy sections of the image.
@@ -491,7 +491,7 @@ Entropy crop
 -}
 cropModeEntropy : Size
 cropModeEntropy =
-    CropMode CropModeEntropy
+    Crop CropModeEntropy
 
 
 
@@ -517,101 +517,97 @@ toQueryParameters_ a =
         AspectRatio ar ->
             [ ( "ar", String.join ":" [ String.fromFloat ar.width, String.fromFloat ar.height ] ) ]
 
-        CropMode cropMode ->
-            case cropMode of
-                CropModeTop ->
-                    [ ( "crop", "top" ) ]
+        Crop CropModeTop ->
+            [ ( "crop", "top" ) ]
 
-                CropModeBottom ->
-                    [ ( "crop", "bottom" ) ]
+        Crop CropModeBottom ->
+            [ ( "crop", "bottom" ) ]
 
-                CropModeLeft ->
-                    [ ( "crop", "left" ) ]
+        Crop CropModeLeft ->
+            [ ( "crop", "left" ) ]
 
-                CropModeRight ->
-                    [ ( "crop", "right" ) ]
+        Crop CropModeRight ->
+            [ ( "crop", "right" ) ]
 
-                CropModeFaces ->
-                    [ ( "crop", "faces" ) ]
+        Crop CropModeFaces ->
+            [ ( "crop", "faces" ) ]
 
-                CropModeFocalPoint { vertical, horizontal, zoom } ->
-                    [ ( "fp-x", String.fromFloat vertical )
-                    , ( "fp-y", String.fromFloat horizontal )
-                    , ( "fp-z", String.fromFloat zoom )
-                    ]
+        Crop (CropModeFocalPoint { vertical, horizontal, zoom }) ->
+            [ ( "fp-x", String.fromFloat vertical )
+            , ( "fp-y", String.fromFloat horizontal )
+            , ( "fp-z", String.fromFloat zoom )
+            ]
 
-                CropModeEdges ->
-                    [ ( "crop", "edges" ) ]
+        Crop CropModeEdges ->
+            [ ( "crop", "edges" ) ]
 
-                CropModeEntropy ->
-                    [ ( "crop", "entropy" ) ]
+        Crop CropModeEntropy ->
+            [ ( "crop", "entropy" ) ]
 
-        Fit resizeFitMode ->
-            case resizeFitMode of
-                Clamp ->
-                    [ ( "fit", "clamp" ) ]
+        Fit ResizeFitModeClamp ->
+            [ ( "fit", "clamp" ) ]
 
-                Clip ->
-                    [ ( "fit", "clip" ) ]
+        Fit ResizeFitModeClip ->
+            [ ( "fit", "clip" ) ]
 
-                Crop ->
-                    [ ( "fit", "crop" ) ]
+        Fit ResizeFitModeCrop ->
+            [ ( "fit", "crop" ) ]
 
-                FaceArea Nothing ->
-                    [ ( "fit", "facearea" ) ]
+        Fit (ResizeFitModeFaceArea Nothing) ->
+            [ ( "fit", "facearea" ) ]
 
-                FaceArea (Just { index, padding }) ->
-                    [ ( "fit", "facearea" )
-                    , ( "faceindex ", String.fromInt index )
-                    , ( "facepad", String.fromInt padding )
-                    ]
+        Fit (ResizeFitModeFaceArea (Just { index, padding })) ->
+            [ ( "fit", "facearea" )
+            , ( "faceindex ", String.fromInt index )
+            , ( "facepad", String.fromInt padding )
+            ]
 
-                Fill Nothing ->
-                    [ ( "fit", "fill" )
-                    , ( "fill", "blur" )
-                    ]
+        Fit (ResizeFitModeFill Nothing) ->
+            [ ( "fit", "fill" )
+            , ( "fill", "blur" )
+            ]
 
-                Fill (Just color) ->
-                    let
-                        { alpha } =
-                            Color.toRgba color
-                    in
-                    if alpha == 0 then
-                        [ ( "fit", "fill" )
-                        ]
+        Fit (ResizeFitModeFill (Just color)) ->
+            let
+                { alpha } =
+                    Color.toRgba color
+            in
+            if alpha == 0 then
+                [ ( "fit", "fill" )
+                ]
 
-                    else
-                        [ ( "fit", "fill" )
-                        , ( "fill", "solid" )
-                        , ( "fill-color", colorToHex color )
-                        ]
+            else
+                [ ( "fit", "fill" )
+                , ( "fill", "solid" )
+                , ( "fill-color", Color.toHex color )
+                ]
 
-                FillMax Nothing ->
-                    [ ( "fit", "fillmax" ) ]
+        Fit (ResizeFitModeFillMax Nothing) ->
+            [ ( "fit", "fillmax" ) ]
 
-                FillMax (Just color) ->
-                    let
-                        { alpha } =
-                            Color.toRgba color
-                    in
-                    if alpha == 0 then
-                        [ ( "fit", "fill" )
-                        ]
+        Fit (ResizeFitModeFillMax (Just color)) ->
+            let
+                { alpha } =
+                    Color.toRgba color
+            in
+            if alpha == 0 then
+                [ ( "fit", "fill" )
+                ]
 
-                    else
-                        [ ( "fit", "fillmax" )
-                        , ( "fill", "solid" )
-                        , ( "fill-color", colorToHex color )
-                        ]
+            else
+                [ ( "fit", "fillmax" )
+                , ( "fill", "solid" )
+                , ( "fill-color", Color.toHex color )
+                ]
 
-                Max ->
-                    [ ( "fit", "max" ) ]
+        Fit ResizeFitModeMax ->
+            [ ( "fit", "max" ) ]
 
-                Min ->
-                    [ ( "fit", "min" ) ]
+        Fit ResizeFitModeMin ->
+            [ ( "fit", "min" ) ]
 
-                Scale ->
-                    [ ( "fit", "scale" ) ]
+        Fit ResizeFitModeScale ->
+            [ ( "fit", "scale" ) ]
 
         Height int ->
             [ ( "h", String.fromInt int ) ]
@@ -700,15 +696,15 @@ type CropMode
 
 
 type ResizeFitMode
-    = Clamp
-    | Clip
-    | Crop
-    | FaceArea (Maybe { index : Int, padding : Int })
-    | Fill (Maybe Color.Color)
-    | FillMax (Maybe Color.Color)
-    | Max
-    | Min
-    | Scale
+    = ResizeFitModeClamp
+    | ResizeFitModeClip
+    | ResizeFitModeCrop
+    | ResizeFitModeFaceArea (Maybe { index : Int, padding : Int })
+    | ResizeFitModeFill (Maybe Color.Color)
+    | ResizeFitModeFillMax (Maybe Color.Color)
+    | ResizeFitModeMax
+    | ResizeFitModeMin
+    | ResizeFitModeScale
 
 
 type SourcePositionX
@@ -725,41 +721,3 @@ type SourcePositionY
     | SourcePositionYTop
     | SourcePositionYMiddle
     | SourcePositionYBottom
-
-
-
--- Helpers
-
-
-{-| Converts a color to a hexadecimal string.
--}
-colorToHex : Color.Color -> String
-colorToHex color =
-    let
-        { red, green, blue } =
-            Color.toRgba color
-    in
-    List.map toHex [ round red, round green, round blue ]
-        |> String.join ""
-
-
-toHex : Int -> String
-toHex =
-    toRadix >> String.padLeft 2 '0'
-
-
-toRadix : Int -> String
-toRadix n =
-    let
-        getChr c =
-            if c < 10 then
-                String.fromInt c
-
-            else
-                String.fromChar <| Char.fromCode (87 + c)
-    in
-    if n < 16 then
-        getChr n
-
-    else
-        toRadix (n // 16) ++ getChr (modBy 16 n)

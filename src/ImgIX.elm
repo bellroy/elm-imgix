@@ -5,6 +5,7 @@ module ImgIX exposing
     , rotation, rotations
     , adjust, adjustments
     , automatic, automatics
+    , stylize, stylizations
     , toUrl, toHtml, toHtmlWithAttributes
     )
 
@@ -41,6 +42,11 @@ module ImgIX exposing
 @docs automatic, automatics
 
 
+# Stylize
+
+@docs stylize, stylizations
+
+
 # Render
 
 @docs toUrl, toHtml, toHtmlWithAttributes
@@ -53,6 +59,7 @@ import ImgIX.Adjustment exposing (Adjustment, toQueryParameters)
 import ImgIX.Automatic exposing (Automatic, toQueryParameter)
 import ImgIX.Rotation exposing (Rotation, toQueryParameters)
 import ImgIX.Size exposing (Size, toQueryParameters)
+import ImgIX.Stylize exposing (Stylize, toQueryParameters)
 import Url as Url exposing (Url, fromString, toString)
 import Url.Builder as UrlBuilder exposing (toQuery)
 
@@ -166,6 +173,28 @@ automatics =
 
 
 
+-- Stylize
+
+
+{-| Adjust an ImgIX using Stylizations
+Check the ImgIX.Stylize module for all the stylizations available.
+-}
+stylize : Stylize -> ImgIX -> ImgIX
+stylize x (ImgIX url imgIXOptions) =
+    ImgIX url
+        { imgIXOptions
+            | stylize = x :: imgIXOptions.stylize
+        }
+
+
+{-| Apply a list of Stylizations
+-}
+stylizations : List Stylize -> ImgIX -> ImgIX
+stylizations =
+    fold stylize
+
+
+
 -- Render
 
 
@@ -186,12 +215,16 @@ toUrl (ImgIX url imgIXOptions) =
         adjustmentQueryParameters =
             ImgIX.Adjustment.toQueryParameters imgIXOptions.adjustment
 
+        stylizeQueryParameters =
+            ImgIX.Stylize.toQueryParameters imgIXOptions.stylize
+
         query =
             UrlBuilder.toQuery
                 (sizeQueryParameters
                     ++ rotationQueryParameters
                     ++ adjustmentQueryParameters
                     ++ [ automaticQueryParameter ]
+                    ++ stylizeQueryParameters
                 )
                 |> String.dropLeft 1
                 |> Just
@@ -229,6 +262,7 @@ type alias ImgIXOptions =
     , adjustment : List Adjustment
     , automatic : List Automatic
     , rotation : List Rotation
+    , stylize : List Stylize
     }
 
 
@@ -244,6 +278,7 @@ emptyImgIXOptions =
     , adjustment = []
     , automatic = []
     , rotation = []
+    , stylize = []
     }
 
 
