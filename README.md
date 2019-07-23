@@ -31,7 +31,7 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [x] Rotation
 - [x] Size
 - [x] Stylize
-- [ ] Text
+- [x] Text
 - [ ] Trim
 - [ ] Typesetting Endpoint
 - [ ] Watermark
@@ -80,7 +80,7 @@ The goal of this package is to supply a full comprehending API supporting all th
 ![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
 
 
-### Usage example Text
+## Usage example Text
 ```elm
 ImgIX.fromUrl imageUrlWomen
     |> ImgIX.sizes

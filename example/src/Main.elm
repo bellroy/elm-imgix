@@ -1,7 +1,6 @@
 module Example exposing (main)
 
 import Browser exposing (element)
-import Color as Color exposing (rgba)
 import Html
 import ImgIX
 import ImgIX.Adjustment
@@ -91,7 +90,7 @@ view _ =
                     , ImgIX.Text.fontSize 100
                     , ImgIX.Text.fitModeMax
                     , ImgIX.Text.padding 20
-                    , ImgIX.Text.color (Color.rgba 255 255 255 0.8)
+                    , ImgIX.Text.color (ImgIX.rgba 255 255 255 0.8)
                     ]
     in
     Html.div []

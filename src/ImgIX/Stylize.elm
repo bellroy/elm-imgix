@@ -20,7 +20,7 @@ module ImgIX.Stylize exposing
 
 -}
 
-import ImgIX.Internals.Color as Color exposing (Alpha, Color, toRgba)
+import ImgIX.Internals.Color as Color exposing (Alpha, Color)
 import Url.Builder as UrlBuilder exposing (QueryParameter, int, string)
 
 

@@ -8,6 +8,7 @@ module ImgIX exposing
     , stylize, stylizations
     , text, textOptions
     , toUrl, toHtml, toHtmlWithAttributes
+    , rgba
     )
 
 {-| Create and apply options to images hosted on [ImgIX](https://www.imgix.com/).
@@ -56,6 +57,11 @@ module ImgIX exposing
 # Render
 
 @docs toUrl, toHtml, toHtmlWithAttributes
+
+
+# Color
+
+@docs rgba
 
 -}
 
@@ -297,6 +303,38 @@ type alias ImgIXOptions =
     , rotation : List Rotation
     , stylize : List Stylize
     , text : List Text
+    }
+
+
+
+-- Color
+
+
+{-| The type of a Color
+-}
+type alias Color =
+    { red : Float, green : Float, blue : Float, alpha : Float }
+
+
+{-| Create a rgba color
+-}
+rgba : Float -> Float -> Float -> Float -> Color
+rgba red green blue alpha =
+    let
+        between a z value =
+            if value < a then
+                a
+
+            else if value > z then
+                z
+
+            else
+                value
+    in
+    { red = between 0 255 red
+    , green = between 0 255 green
+    , blue = between 0 255 blue
+    , alpha = between 0 1 alpha
     }
 
 

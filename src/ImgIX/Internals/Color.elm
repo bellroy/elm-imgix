@@ -1,23 +1,12 @@
-module ImgIX.Internals.Color exposing (Alpha, Color, toHex, toHexAlpha, toRgba)
-
-import Color as Color exposing (Color, toRgba)
+module ImgIX.Internals.Color exposing (Alpha, Color, toHex, toHexAlpha)
 
 
-{-| The Color Type
--}
 type alias Color =
-    Color.Color
+    { red : Float, green : Float, blue : Float, alpha : Alpha }
 
 
 type alias Alpha =
     Float
-
-
-{-| Converts a color to a rgba record.
--}
-toRgba : Color -> { red : Float, green : Float, blue : Float, alpha : Float }
-toRgba =
-    Color.toRgba
 
 
 {-| Converts a color to a hexadecimal string.
@@ -26,7 +15,7 @@ toHex : Color -> String
 toHex color =
     let
         { red, green, blue } =
-            toRgba color
+            color
     in
     List.map intToHex [ round red, round green, round blue ]
         |> String.join ""
@@ -38,7 +27,7 @@ toHexAlpha : Color -> String
 toHexAlpha color =
     let
         { red, green, blue, alpha } =
-            toRgba color
+            color
     in
     List.map intToHex [ round (alpha * 255), round red, round green, round blue ]
         |> String.join ""

@@ -94,7 +94,7 @@ Focal Point Cropping allows you to target and zoom to a portion of the image usi
 -}
 
 import ImgIX.Internals.Color as Color exposing (Color, toHex)
-import List.Extra as ListExtra exposing (group)
+import List.Extra as ListExtra exposing (groupWhile)
 import Url.Builder as UrlBuilder exposing (QueryParameter, string)
 
 
@@ -568,11 +568,7 @@ toQueryParameters_ a =
             ]
 
         Fit (ResizeFitModeFill (Just color)) ->
-            let
-                { alpha } =
-                    Color.toRgba color
-            in
-            if alpha == 0 then
+            if color.alpha == 0 then
                 [ ( "fit", "fill" )
                 ]
 
@@ -586,11 +582,7 @@ toQueryParameters_ a =
             [ ( "fit", "fillmax" ) ]
 
         Fit (ResizeFitModeFillMax (Just color)) ->
-            let
-                { alpha } =
-                    Color.toRgba color
-            in
-            if alpha == 0 then
+            if color.alpha == 0 then
                 [ ( "fit", "fill" )
                 ]
 
