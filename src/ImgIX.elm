@@ -6,6 +6,7 @@ module ImgIX exposing
     , adjust, adjustments
     , automatic, automatics
     , stylize, stylizations
+    , text, textOptions
     , toUrl, toHtml, toHtmlWithAttributes
     )
 
@@ -47,6 +48,11 @@ module ImgIX exposing
 @docs stylize, stylizations
 
 
+# Text
+
+@docs text, textOptions
+
+
 # Render
 
 @docs toUrl, toHtml, toHtmlWithAttributes
@@ -60,6 +66,7 @@ import ImgIX.Automatic exposing (Automatic, toQueryParameter)
 import ImgIX.Rotation exposing (Rotation, toQueryParameters)
 import ImgIX.Size exposing (Size, toQueryParameters)
 import ImgIX.Stylize exposing (Stylize, toQueryParameters)
+import ImgIX.Text exposing (Text, toQueryParameters)
 import Url as Url exposing (Url, fromString, toString)
 import Url.Builder as UrlBuilder exposing (toQuery)
 
@@ -195,6 +202,28 @@ stylizations =
 
 
 
+-- Text
+
+
+{-| Adjust an ImgIX using Text
+Check the ImgIX.Text module for all the text options available.
+-}
+text : Text -> ImgIX -> ImgIX
+text x (ImgIX url imgIXOptions) =
+    ImgIX url
+        { imgIXOptions
+            | text = x :: imgIXOptions.text
+        }
+
+
+{-| Apply a list of Text
+-}
+textOptions : List Text -> ImgIX -> ImgIX
+textOptions =
+    fold text
+
+
+
 -- Render
 
 
@@ -218,6 +247,9 @@ toUrl (ImgIX url imgIXOptions) =
         stylizeQueryParameters =
             ImgIX.Stylize.toQueryParameters imgIXOptions.stylize
 
+        textQueryParameters =
+            ImgIX.Text.toQueryParameters imgIXOptions.text
+
         query =
             UrlBuilder.toQuery
                 (sizeQueryParameters
@@ -225,6 +257,7 @@ toUrl (ImgIX url imgIXOptions) =
                     ++ adjustmentQueryParameters
                     ++ [ automaticQueryParameter ]
                     ++ stylizeQueryParameters
+                    ++ textQueryParameters
                 )
                 |> String.dropLeft 1
                 |> Just
@@ -263,6 +296,7 @@ type alias ImgIXOptions =
     , automatic : List Automatic
     , rotation : List Rotation
     , stylize : List Stylize
+    , text : List Text
     }
 
 
@@ -279,6 +313,7 @@ emptyImgIXOptions =
     , automatic = []
     , rotation = []
     , stylize = []
+    , text = []
     }
 
 

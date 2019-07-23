@@ -40,7 +40,7 @@ toHexAlpha color =
         { red, green, blue, alpha } =
             toRgba color
     in
-    List.map intToHex [ round alpha, round red, round green, round blue ]
+    List.map intToHex [ round (alpha * 255), round red, round green, round blue ]
         |> String.join ""
 
 

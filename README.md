@@ -36,15 +36,9 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [ ] Typesetting Endpoint
 - [ ] Watermark
 
-## Usage example A
+## Usage example Simple
 
 ```elm
-import ImgIX
-import ImgIX.Size
-
-
-exampleB :   Html.Html msg
-exampleB  =
   ImgIX.fromUrl imageUrlWomen
       |> ImgIX.sizes
           [ ImgIX.Size.height 200
@@ -55,20 +49,10 @@ exampleB  =
 ![result example a](https://static-a.imgix.net/woman.jpg?h=200)
 
 
-## Usage example B
+## Usage example Advanced
 
 
 ```elm
-import ImgIX
-import ImgIX.Adjustment
-import ImgIX.Automatic
-import ImgIX.Rotation
-import ImgIX.Size
-import ImgIX.Stylize
-
-
-exampleB :   Html.Html msg
-exampleB  =
   ImgIX.fromUrl imageUrlWomen
       |> ImgIX.sizes
           [ ImgIX.Size.width 200
@@ -94,3 +78,28 @@ exampleB  =
 ```
 
 ![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
+
+
+### Usage example Text
+```elm
+ImgIX.fromUrl imageUrlWomen
+    |> ImgIX.sizes
+        [ ImgIX.Size.height 380
+        ]
+    |> ImgIX.stylizations
+        [ ImgIX.Stylize.blur 30
+        ]
+    |> ImgIX.adjustments
+        [ ImgIX.Adjustment.brightness -50
+        ]
+    |> ImgIX.textOptions
+        [ ImgIX.Text.text "Hello World 👍 !"
+        , ImgIX.Text.alignCenter
+        , ImgIX.Text.alignMiddle
+        , ImgIX.Text.fontSize 100
+        , ImgIX.Text.fitModeMax
+        , ImgIX.Text.padding 40
+        , ImgIX.Text.color (Color.rgba 255 255 255 0.8)
+        ]
+```
+![result example c](https://static-a.imgix.net/woman.jpg?h=380&bri=-50&auto=&blur=30&txt=Hello%20World%20%F0%9F%91%8D%20!&txtalign=center%2Cmiddle&txtsize=100&txtfit=max&txtpad=40&txtclr=ccffffff)
