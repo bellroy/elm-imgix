@@ -1,0 +1,24 @@
+{
+    "type": "package",
+    "name": "tricycle/elm-imgix",
+    "summary": "A wrapper around ImgIX image API for Elm",
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
+    "exposed-modules": [
+        "ImgIX",
+        "ImgIX.Adjustment",
+        "ImgIX.Automatic",
+        "ImgIX.Size"
+    ],
+    "elm-version": "0.19.0 <= v < 0.20.0",
+    "dependencies": {
+        "avh4/elm-color": "1.0.0 <= v < 2.0.0",
+        "elm/core": "1.0.0 <= v < 2.0.0",
+        "elm/html": "1.0.0 <= v < 2.0.0",
+        "elm/url": "1.0.0 <= v < 2.0.0",
+        "elm-community/list-extra": "8.2.0 <= v < 9.0.0"
+    },
+    "test-dependencies": {
+        "elm-explorations/test": "1.2.1 <= v < 2.0.0"
+    }
+}
