@@ -20,9 +20,9 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [ ] Blending
 - [ ] Border & Padding
 - [ ] Color Palette
-- [ ] Face Detection
-- [ ] Fill
-- [ ] Focal Point Crop
+- [x] Face Detection
+- [x] Fill
+- [x] Focal Point Crop
 - [ ] Format
 - [ ] Mask Image
 - [ ] Noise Reduction
