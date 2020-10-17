@@ -8,6 +8,7 @@
         "ImgIX",
         "ImgIX.Adjustment",
         "ImgIX.Automatic",
+        "ImgIX.PixelDensity",
         "ImgIX.Size",
         "ImgIX.Rotation",
         "ImgIX.Stylize",

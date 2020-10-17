@@ -1,6 +1,7 @@
 module ImgIX exposing
     ( ImgIX
     , fromUrl, fromString
+    , pixelDensity, pixelDensities
     , size, sizes
     , rotation, rotations
     , adjust, adjustments
@@ -22,6 +23,11 @@ module ImgIX exposing
 # Creation
 
 @docs fromUrl, fromString
+
+
+# Pixel Density
+
+@docs pixelDensity, pixelDensities
 
 
 # Size
@@ -69,6 +75,7 @@ import Html as Html exposing (Attribute, img)
 import Html.Attributes as HtmlAttr exposing (src)
 import ImgIX.Adjustment exposing (Adjustment, toQueryParameters)
 import ImgIX.Automatic exposing (Automatic, toQueryParameter)
+import ImgIX.PixelDensity exposing (PixelDensity, toQueryParameters)
 import ImgIX.Rotation exposing (Rotation, toQueryParameters)
 import ImgIX.Size exposing (Size, toQueryParameters)
 import ImgIX.Stylize exposing (Stylize, toQueryParameters)
@@ -95,6 +102,28 @@ fromUrl url =
 fromString : String -> Maybe ImgIX
 fromString =
     Maybe.map fromUrl << Url.fromString
+
+
+
+-- Pixel Density
+
+
+{-| Control the pixel density of an ImgIX
+Check the ImgIX.PixelDensity module for all the available options.
+-}
+pixelDensity : PixelDensity -> ImgIX -> ImgIX
+pixelDensity x (ImgIX url imgIXOptions) =
+    ImgIX url
+        { imgIXOptions
+            | pixelDensity = x :: imgIXOptions.pixelDensity
+        }
+
+
+{-| Apply a list of PixelDensity operations
+-}
+pixelDensities : List PixelDensity -> ImgIX -> ImgIX
+pixelDensities =
+    fold pixelDensity
 
 
 
@@ -241,6 +270,9 @@ toUrl (ImgIX url imgIXOptions) =
         sizeQueryParameters =
             ImgIX.Size.toQueryParameters imgIXOptions.size
 
+        pixelDensityParameters =
+            ImgIX.PixelDensity.toQueryParameters imgIXOptions.pixelDensity
+
         rotationQueryParameters =
             ImgIX.Rotation.toQueryParameters imgIXOptions.rotation
 
@@ -259,6 +291,7 @@ toUrl (ImgIX url imgIXOptions) =
         query =
             UrlBuilder.toQuery
                 (sizeQueryParameters
+                    ++ pixelDensityParameters
                     ++ rotationQueryParameters
                     ++ adjustmentQueryParameters
                     ++ [ automaticQueryParameter ]
@@ -298,6 +331,7 @@ toHtmlWithAttributes listOfAttributes imgix =
 
 type alias ImgIXOptions =
     { size : List Size
+    , pixelDensity : List PixelDensity
     , adjustment : List Adjustment
     , automatic : List Automatic
     , rotation : List Rotation
@@ -347,6 +381,7 @@ rgba red green blue alpha =
 emptyImgIXOptions : ImgIXOptions
 emptyImgIXOptions =
     { size = []
+    , pixelDensity = []
     , adjustment = []
     , automatic = []
     , rotation = []
