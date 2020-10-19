@@ -64,7 +64,5 @@ toQueryParameters pixelDensityOperations =
 
 
 toQueryParameters_ : PixelDensity -> List ( String, String )
-toQueryParameters_ a =
-    case a of
-        Dpr density ->
-            [ ( "dpr", String.fromInt density ) ]
+toQueryParameters_ (Dpr density) =
+    [ ( "dpr", String.fromInt density ) ]
