@@ -1,6 +1,7 @@
 module ImgIX.Format exposing
-    ( Format
+    ( Format, empty
     , q
+    , lossless
     , toQueryParameters
     )
 
@@ -8,7 +9,7 @@ module ImgIX.Format exposing
 
 [ImgIX documentation for Format](https://docs.imgix.com/apis/rendering/format)
 
-@docs Format
+@docs Format, empty
 
 
 # Output Quality
@@ -20,50 +21,86 @@ Valid values are in the range 0 – 100 and the default is 75. Quality can often
 @docs q
 
 
+# Lossless
+
+The lossless parameter enables delivery of lossless images in formats that support lossless compression (JPEG XR and WEBP).
+
+Valid values are 1/true and 0/false. When unset or set to an invalid value, lossless defaults to false.
+
+@docs lossless
+
+
 # Applying
 
 @docs toQueryParameters
 
 -}
 
-import List.Extra as ListExtra exposing (groupWhile)
+import Maybe.Extra as Maybe
 import Url.Builder as UrlBuilder exposing (QueryParameter, string)
 
 
 {-| The Format type
 -}
-type Format
-    = OutputQuality Int
+type alias Format =
+    { outputQuality : Maybe Int
+    , useLossless : Maybe Bool
+    }
+
+
+{-| -}
+empty : Format
+empty =
+    { outputQuality = Nothing
+    , useLossless = Nothing
+    }
 
 
 
--- Device Pixel Ratio
+-- Output Quality
 
 
-{-| The output quality of lossy file formats.
+{-| Set the output quality of lossy file formats.
 -}
-q : Int -> Format
-q =
-    OutputQuality
+q : Int -> Format -> Format
+q quality format =
+    { format | outputQuality = Just quality }
+
+
+
+-- Lossless
+
+
+{-| Set to enable/disable the delivery of lossless images in formats that support lossless compression (JPEG XR and WEBP).
+-}
+lossless : Bool -> Format -> Format
+lossless b format =
+    { format | useLossless = Just b }
 
 
 
 -- Applying
 
 
-{-| Takes a list of format operations and turns it in to a list of query parameters that ImgIX understands
+{-| Takes format operations and turns them to a list of URL query parameters that ImgIX understands
 -}
-toQueryParameters : List Format -> List UrlBuilder.QueryParameter
-toQueryParameters formatOperations =
-    List.foldl (\a b -> toQueryParameters_ a ++ b) [] formatOperations
-        |> ListExtra.groupWhile (\( a, _ ) ( b, _ ) -> a == b)
-        |> List.map
-            (\( ( a, b ), c ) ->
-                ( a, String.join "," <| (b :: List.map Tuple.second c) )
-            )
-        |> List.map (\( a, b ) -> UrlBuilder.string a b)
+toQueryParameters : Format -> List UrlBuilder.QueryParameter
+toQueryParameters format =
+    [ toQueryParameter "q" String.fromInt <| format.outputQuality
+    , toQueryParameter "lossless" fromBool <| format.useLossless
+    ]
+        |> Maybe.values
 
 
-toQueryParameters_ : Format -> List ( String, String )
-toQueryParameters_ (OutputQuality quality) =
-    [ ( "q", String.fromInt quality ) ]
+toQueryParameter : String -> (a -> String) -> Maybe a -> Maybe UrlBuilder.QueryParameter
+toQueryParameter parameterName f =
+    Maybe.map (\a -> UrlBuilder.string parameterName (f a))
+
+
+fromBool : Bool -> String
+fromBool b =
+    if b then
+        "1"
+
+    else
+        "0"

@@ -2,7 +2,7 @@ module ImgIX exposing
     ( ImgIX
     , fromUrl, fromString
     , pixelDensity, pixelDensities
-    , format, formats
+    , format
     , size, sizes
     , rotation, rotations
     , adjust, adjustments
@@ -33,7 +33,7 @@ module ImgIX exposing
 
 # Format
 
-@docs format, formats
+@docs format
 
 
 # Size
@@ -136,19 +136,9 @@ pixelDensities =
 {-| Control the format of an ImgIX
 Check the ImgIX.Format module for all the available options.
 -}
-format : Format -> ImgIX -> ImgIX
-format x (ImgIX url imgIXOptions) =
-    ImgIX url
-        { imgIXOptions
-            | format = x :: imgIXOptions.format
-        }
-
-
-{-| Apply a list of Format operations
--}
-formats : List Format -> ImgIX -> ImgIX
-formats =
-    fold format
+format : List (Format -> Format) -> ImgIX -> ImgIX
+format fs (ImgIX url imgIXOptions) =
+    ImgIX url { imgIXOptions | format = List.foldl (\f a -> f a) imgIXOptions.format fs }
 
 
 
@@ -361,7 +351,7 @@ toHtmlWithAttributes listOfAttributes imgix =
 type alias ImgIXOptions =
     { size : List Size
     , pixelDensity : List PixelDensity
-    , format : List Format
+    , format : Format
     , adjustment : List Adjustment
     , automatic : List Automatic
     , rotation : List Rotation
@@ -412,7 +402,7 @@ emptyImgIXOptions : ImgIXOptions
 emptyImgIXOptions =
     { size = []
     , pixelDensity = []
-    , format = []
+    , format = ImgIX.Format.empty
     , adjustment = []
     , automatic = []
     , rotation = []

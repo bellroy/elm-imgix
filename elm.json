@@ -21,6 +21,7 @@
         "elm/html": "1.0.0 <= v < 2.0.0",
         "elm/url": "1.0.0 <= v < 2.0.0",
         "elm-community/list-extra": "8.2.0 <= v < 9.0.0",
+        "elm-community/maybe-extra": "5.2.0 <= v < 6.0.0",
         "truqu/elm-base64": "2.0.4 <= v < 3.0.0"
     },
     "test-dependencies": {
