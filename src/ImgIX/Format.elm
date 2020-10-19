@@ -37,7 +37,7 @@ Valid values are 1/true and 0/false. When unset or set to an invalid value, loss
 -}
 
 import Maybe.Extra as Maybe
-import Url.Builder as UrlBuilder exposing (QueryParameter, string)
+import Url.Builder as UrlBuilder
 
 
 {-| The Format type
