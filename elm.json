@@ -8,9 +8,10 @@
         "ImgIX",
         "ImgIX.Adjustment",
         "ImgIX.Automatic",
+        "ImgIX.Format",
         "ImgIX.PixelDensity",
-        "ImgIX.Size",
         "ImgIX.Rotation",
+        "ImgIX.Size",
         "ImgIX.Stylize",
         "ImgIX.Text"
     ],
