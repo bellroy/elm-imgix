@@ -27,7 +27,7 @@ The goal of this package is to supply a full comprehending API supporting all th
 - [ ] Mask Image
 - [ ] Noise Reduction
 - [ ] PDF
-- [ ] Pixel Density
+- [x] Pixel Density
 - [x] Rotation
 - [x] Size
 - [x] Stylize
@@ -70,6 +70,9 @@ The goal of this package is to supply a full comprehending API supporting all th
           [ ImgIX.Stylize.blur 20
           , ImgIX.Stylize.sepia 99
           ]
+      |> ImgIX.pixelDensities
+          [ ImgIX.PixelDensity.dpr 2
+          ]
       |> ImgIX.automatics
           [ ImgIX.Automatic.fileFormat
           ]
@@ -77,7 +80,7 @@ The goal of this package is to supply a full comprehending API supporting all th
 
 ```
 
-![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
+![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&dpr=2&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
 
 
 ## Usage example Text

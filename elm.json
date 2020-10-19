@@ -3,11 +3,12 @@
     "name": "tricycle/elm-imgix",
     "summary": "A wrapper around ImgIX image API for Elm",
     "license": "BSD-3-Clause",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "exposed-modules": [
         "ImgIX",
         "ImgIX.Adjustment",
         "ImgIX.Automatic",
+        "ImgIX.PixelDensity",
         "ImgIX.Size",
         "ImgIX.Rotation",
         "ImgIX.Stylize",
