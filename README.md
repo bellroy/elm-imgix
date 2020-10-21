@@ -73,14 +73,16 @@ The goal of this package is to supply a full comprehending API supporting all th
       |> ImgIX.pixelDensities
           [ ImgIX.PixelDensity.dpr 2
           ]
+      |> ImgIX.format
+          [ ImgIX.Format.q 60,
+          , ImgIX.Format.lossless False
+          ]
       |> ImgIX.automatics
           [ ImgIX.Automatic.fileFormat
           ]
-
-
 ```
 
-![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&dpr=2&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
+![result example b](https://static-a.imgix.net/woman.jpg?w=200&h=200&fit=facearea&dpr=2&q=60&rot=12&flip=h&bri=20&auto=format&blur=20&sepia=99)
 
 
 ## Usage example Text
