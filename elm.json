@@ -1,9 +1,9 @@
 {
     "type": "package",
-    "name": "tricycle/elm-imgix",
+    "name": "bellroy/elm-imgix",
     "summary": "A wrapper around ImgIX image API for Elm",
     "license": "BSD-3-Clause",
-    "version": "1.6.0",
+    "version": "1.0.0",
     "exposed-modules": [
         "ImgIX",
         "ImgIX.Adjustment",
